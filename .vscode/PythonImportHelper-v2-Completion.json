@@ -1,0 +1,214 @@
+[
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_total",
+        "importPath": "helpers",
+        "description": "helpers",
+        "isExtraImport": true,
+        "detail": "helpers",
+        "documentation": {}
+    },
+    {
+        "label": "format_currency",
+        "importPath": "helpers",
+        "description": "helpers",
+        "isExtraImport": true,
+        "detail": "helpers",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "sales-analysis.analyzer",
+        "description": "sales-analysis.analyzer",
+        "peekOfCode": "df = pd.read_csv('data/sales.csv')\n# Calculate total for each row\ntotals = []\nfor index, row in df.iterrows():\n    total = calculate_total(row['quantity'], row['price'])\n    totals.append(total)\n# Add totals to our data\ndf['total'] = totals\n# Display with formatted totals\nprint(\"Sales Data:\")",
+        "detail": "sales-analysis.analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "totals",
+        "kind": 5,
+        "importPath": "sales-analysis.analyzer",
+        "description": "sales-analysis.analyzer",
+        "peekOfCode": "totals = []\nfor index, row in df.iterrows():\n    total = calculate_total(row['quantity'], row['price'])\n    totals.append(total)\n# Add totals to our data\ndf['total'] = totals\n# Display with formatted totals\nprint(\"Sales Data:\")\nfor index, row in df.iterrows():\n    formatted_total = format_currency(row['total'])",
+        "detail": "sales-analysis.analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "df['total']",
+        "kind": 5,
+        "importPath": "sales-analysis.analyzer",
+        "description": "sales-analysis.analyzer",
+        "peekOfCode": "df['total'] = totals\n# Display with formatted totals\nprint(\"Sales Data:\")\nfor index, row in df.iterrows():\n    formatted_total = format_currency(row['total'])\n    print(f\"{row['product']}: {formatted_total}\")\n# Show grand total\ngrand_total = df['total'].sum()\nformatted_grand_total = format_currency(grand_total)\nprint(f\"\\nGrand Total: {formatted_grand_total}\")",
+        "detail": "sales-analysis.analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "grand_total",
+        "kind": 5,
+        "importPath": "sales-analysis.analyzer",
+        "description": "sales-analysis.analyzer",
+        "peekOfCode": "grand_total = df['total'].sum()\nformatted_grand_total = format_currency(grand_total)\nprint(f\"\\nGrand Total: {formatted_grand_total}\")",
+        "detail": "sales-analysis.analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "formatted_grand_total",
+        "kind": 5,
+        "importPath": "sales-analysis.analyzer",
+        "description": "sales-analysis.analyzer",
+        "peekOfCode": "formatted_grand_total = format_currency(grand_total)\nprint(f\"\\nGrand Total: {formatted_grand_total}\")",
+        "detail": "sales-analysis.analyzer",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_total",
+        "kind": 2,
+        "importPath": "sales-analysis.helpers",
+        "description": "sales-analysis.helpers",
+        "peekOfCode": "def calculate_total(quantity, price):\n    \"\"\"Calculate total for a single item\"\"\"\n    return quantity * price\ndef format_currency(amount):\n    \"\"\"Format number as currency\"\"\"\n    return f\"${amount:,.2f}\"",
+        "detail": "sales-analysis.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "format_currency",
+        "kind": 2,
+        "importPath": "sales-analysis.helpers",
+        "description": "sales-analysis.helpers",
+        "peekOfCode": "def format_currency(amount):\n    \"\"\"Format number as currency\"\"\"\n    return f\"${amount:,.2f}\"",
+        "detail": "sales-analysis.helpers",
+        "documentation": {}
+    },
+    {
+        "label": "today",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "today = datetime.now()\nweek_ago = today - timedelta(days=7)\n# Format dates for API (YYYY-MM-DD)\nstart_date = week_ago.strftime(\"%Y-%m-%d\")\nend_date = today.strftime(\"%Y-%m-%d\")\n# Get Paris weather for past week\nurl = f\"https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&start_date={start_date}&end_date={end_date}&daily=temperature_2m_max,temperature_2m_min\"\nresponse = requests.get(url)\ndata = response.json()\nprint(data)",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "week_ago",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "week_ago = today - timedelta(days=7)\n# Format dates for API (YYYY-MM-DD)\nstart_date = week_ago.strftime(\"%Y-%m-%d\")\nend_date = today.strftime(\"%Y-%m-%d\")\n# Get Paris weather for past week\nurl = f\"https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&start_date={start_date}&end_date={end_date}&daily=temperature_2m_max,temperature_2m_min\"\nresponse = requests.get(url)\ndata = response.json()\nprint(data)\n#----------------------------------------------------------",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "start_date",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "start_date = week_ago.strftime(\"%Y-%m-%d\")\nend_date = today.strftime(\"%Y-%m-%d\")\n# Get Paris weather for past week\nurl = f\"https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&start_date={start_date}&end_date={end_date}&daily=temperature_2m_max,temperature_2m_min\"\nresponse = requests.get(url)\ndata = response.json()\nprint(data)\n#----------------------------------------------------------\n# Extract the daily data\ndaily_data = data['daily']",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "end_date",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "end_date = today.strftime(\"%Y-%m-%d\")\n# Get Paris weather for past week\nurl = f\"https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&start_date={start_date}&end_date={end_date}&daily=temperature_2m_max,temperature_2m_min\"\nresponse = requests.get(url)\ndata = response.json()\nprint(data)\n#----------------------------------------------------------\n# Extract the daily data\ndaily_data = data['daily']\n# Create a DataFrame",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "url",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "url = f\"https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&start_date={start_date}&end_date={end_date}&daily=temperature_2m_max,temperature_2m_min\"\nresponse = requests.get(url)\ndata = response.json()\nprint(data)\n#----------------------------------------------------------\n# Extract the daily data\ndaily_data = data['daily']\n# Create a DataFrame\ndf = pd.DataFrame({\n    'date': daily_data['time'],",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "response",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "response = requests.get(url)\ndata = response.json()\nprint(data)\n#----------------------------------------------------------\n# Extract the daily data\ndaily_data = data['daily']\n# Create a DataFrame\ndf = pd.DataFrame({\n    'date': daily_data['time'],\n    'max_temp': daily_data['temperature_2m_max'],",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "data = response.json()\nprint(data)\n#----------------------------------------------------------\n# Extract the daily data\ndaily_data = data['daily']\n# Create a DataFrame\ndf = pd.DataFrame({\n    'date': daily_data['time'],\n    'max_temp': daily_data['temperature_2m_max'],\n    'min_temp': daily_data['temperature_2m_min']",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "daily_data",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "daily_data = data['daily']\n# Create a DataFrame\ndf = pd.DataFrame({\n    'date': daily_data['time'],\n    'max_temp': daily_data['temperature_2m_max'],\n    'min_temp': daily_data['temperature_2m_min']\n})\n# Convert date strings to datetime\ndf['date'] = pd.to_datetime(df['date'])\nprint(df)",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "df = pd.DataFrame({\n    'date': daily_data['time'],\n    'max_temp': daily_data['temperature_2m_max'],\n    'min_temp': daily_data['temperature_2m_min']\n})\n# Convert date strings to datetime\ndf['date'] = pd.to_datetime(df['date'])\nprint(df)\n#---------------------------------------------------------------\n# Create the plot",
+        "detail": "get_data",
+        "documentation": {}
+    },
+    {
+        "label": "df['date']",
+        "kind": 5,
+        "importPath": "get_data",
+        "description": "get_data",
+        "peekOfCode": "df['date'] = pd.to_datetime(df['date'])\nprint(df)\n#---------------------------------------------------------------\n# Create the plot\nplt.figure(figsize=(10, 6))\nplt.plot(df['date'], df['max_temp'], marker='o', label='Max Temp')\nplt.plot(df['date'], df['min_temp'], marker='o', label='Min Temp')\n# Add labels and title\nplt.xlabel('Date')\nplt.ylabel('Temperature (°C)')",
+        "detail": "get_data",
+        "documentation": {}
+    }
+]
